@@ -1,0 +1,22 @@
+server:
+  port: 10000
+
+# mysql
+spring:
+  datasource:
+    #MySQL配置
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/gulimall_oms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: long@123
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  application:
+    name: gulimall-order
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml  # 需要扫描的mapper.xml映射文件
+  global-config:
+    db-config:
+      id-type: auto #主键自增

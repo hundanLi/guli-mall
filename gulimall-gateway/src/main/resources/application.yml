@@ -1,0 +1,59 @@
+# 端口
+server:
+  port: 8888
+
+spring:
+  cloud:
+    gateway:
+      # 网关路由和断言
+      routes:
+#        - id: baidu_route
+#          uri: https://www.baidu.com
+#          predicates:
+#            - Query=to,baidu
+#        - id: bing_route
+#          uri: https://www.bing.com
+#          predicates:
+#            - Query=to,bing
+
+        # 商品管理
+        - id: product_route
+          uri: lb://gulimall-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*), /$\{segment}
+
+        # 第三方服务
+        - id: thirdparty_route
+          uri: lb://gulimall-thirdparty
+          predicates:
+            - Path=/api/thirdparty/**
+          filters:
+            - RewritePath=/api/thirdparty/(?<segment>/?.*), /$\{segment}
+
+        # 会员服务
+        - id: member_route
+          uri: lb://gulimall-member
+          predicates:
+            - Path=/api/member/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*), /$\{segment}
+
+        # 仓库服务
+        - id: ware_route
+          uri: lb://gulimall-ware
+          predicates:
+            - Path=/api/ware/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*), /$\{segment}
+
+        # 后台管理，因为会按顺序匹配路由，因此将admin放在最后
+        - id: admin_route
+          # lb负载均衡
+          uri: lb://renren-fast
+          # 路径断言
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}

@@ -1,0 +1,29 @@
+server:
+  port: 7000
+
+spring:
+  datasource:
+    username: root
+    password: long@123
+    url: jdbc:mysql://localhost:3306/gulimall_pms?serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+  application:
+    name: gulimall-product
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml  # 需要扫描的mapper.xml映射文件
+  global-config:
+    db-config:
+      id-type: auto #主键自增
+      # 默认全局逻辑删除配置
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+logging:
+  level:
+    com.hundanli.gulimall: debug
