@@ -16,25 +16,25 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Catelog2Vo {
+public class Catalog2Vo {
 
     /**
      * 父分类，即一级分类id
      */
-    private String catelog1Id;
+    private String catalog1Id;
     private String id;
     private String name;
-    private List<Catelog3Vo> catelog3List;
+    private List<Catalog3Vo> catalog3List;
 
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class Catelog3Vo {
+    public static class Catalog3Vo {
 
         /**
          * 父分类，即二级分类id
          */
-        private String catelog2Id;
+        private String catalog2Id;
         private String id;
         private String name;
     }

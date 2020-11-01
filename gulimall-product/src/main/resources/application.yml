@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     username: root
-    password: long@123
+    password: root
     url: jdbc:mysql://localhost:3306/gulimall_pms?serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
@@ -16,6 +16,18 @@ spring:
     name: gulimall-product
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
+
+  # thymeleaf
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+  mvc:
+    static-path-pattern: /static/**  # 将 /static/1.jpg 映射到 classpath:/static/1.jpg文件
+  devtools:
+    restart:
+      enabled: true
+
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml  # 需要扫描的mapper.xml映射文件
   global-config:

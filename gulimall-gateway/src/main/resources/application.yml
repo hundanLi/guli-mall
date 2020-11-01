@@ -57,3 +57,11 @@ spring:
             - Path=/api/**
           filters:
             - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
+
+        # 域名路由
+        - id: host_route
+          # lb负载均衡
+          uri: lb://gulimall-product
+          # 域名断言
+          predicates:
+            - Host=**.gulimall.com
