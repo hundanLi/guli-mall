@@ -22,5 +22,6 @@
         <module>gulimall-gateway</module>
         <module>gulimall-search</module>
         <module>gulimall-thirdparty</module>
+        <module>gulimall-auth</module>
     </modules>
 </project>
