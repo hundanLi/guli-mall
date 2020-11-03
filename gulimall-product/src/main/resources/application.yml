@@ -1,5 +1,9 @@
 server:
   port: 7000
+#  tomcat:
+#    accesslog:
+#      enabled: true
+#      directory: accesslogs
 
 spring:
   datasource:
@@ -38,4 +42,6 @@ mybatis-plus:
       logic-not-delete-value: 0
 logging:
   level:
-    com.hundanli.gulimall: debug
+    root: error
+    com.hundanli.gulimall: error
+
