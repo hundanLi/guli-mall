@@ -6603,11 +6603,32 @@ Cookie</span>是由网页服务器存放在您的访问设备上的文本文件�
         $(".zong").hide();
     });
 
-	$("#sendCode").click(function (){
-		// 1.发送手机验证码
+    let sendCode = $("#sendCode");
+    let num = 60;
+    sendCode.click(function () {
 
-		// 2.倒计时60s
-	});
+
+        // 1.倒计时60s
+        if (num === 60) {
+			countDown();
+		}
+
+		// 2.发送手机验证码
+    });
+
+    function countDown() {
+        // disabled
+        sendCode.attr("class", "disabled");
+        if (num === 0) {
+            sendCode.attr("class", "");
+            sendCode.text("发送验证码");
+            num = 60;
+        } else {
+            num--;
+            sendCode.text(num + "s后再次发送");
+            setTimeout("countDown()", 1000);
+        }
+    }
 </script>
 </body>
 
